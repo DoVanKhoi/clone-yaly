@@ -5,6 +5,8 @@ export default function LandingPage() {
     <>
       <LANDING.SectionHeaderLanding />
       <LANDING.SectionIntroLanding />
+      <LANDING.SectionPannelLanding />
+      <LANDING.SectionContentLanding />
       <LANDING.SectionFooterLanding />
     </>
   );
