@@ -46,7 +46,7 @@ export default function SectionPannelLanding() {
     return (
         <>
             {listPannel.map((pannel, index) => (
-                <div key={index} className={`h-dvh bg-cover bg-center flex items-center justify-center flex-col`}
+                <div key={index} className="h-dvh bg-cover bg-center bg-fixed flex items-center justify-center flex-col"
                     style={{ backgroundImage: `url(${pannel.img})` }}
                 >
                     <h1 className="text-6xl font-semibold text-center text-white mb-4 w-3xl">
