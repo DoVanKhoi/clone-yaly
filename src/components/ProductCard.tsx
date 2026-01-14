@@ -15,7 +15,7 @@ export default function ProductCard({
     likes = 0,
 }: ProductCardProps) {
     return (
-        <div className="group rounded-xl overflow-hidden bg-white transition-shadow duration-300 hover:shadow-xl">
+        <div className="group rounded-xl overflow-hidden bg-white transition-shadow duration-300 shadow hover:shadow-xl">
             {/* Image */}
             <div className="relative w-full h-105 overflow-hidden">
                 <Image
@@ -27,7 +27,7 @@ export default function ProductCard({
                     priority={false}
                 />
 
-                <button className="absolute bottom-3 right-3 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white shadow-md transition hover:scale-110 hover:text-orange-400">
+                <button className="absolute bottom-3 right-3 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white shadow-md transition hover:scale-110 hover:text-orange-500">
                     <ShoppingBag size={18} />
                 </button>
             </div>
