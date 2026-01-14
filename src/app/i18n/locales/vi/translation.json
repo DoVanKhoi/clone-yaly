@@ -1,0 +1,18 @@
+{
+  "common": {
+    "button": {
+      "search": "Tìm kiếm"
+    }
+  },
+  "DefaultLayout": {
+    "title": "Yaly Couture",
+    "description": "Thời trang cao cấp từ Việt Nam"
+  },
+  "LandingPage": {
+    "title": "Yaly Couture",
+    "SectionIntro": {
+      "slide": "Trang",
+      "of": "trong số"
+    }
+  }
+}

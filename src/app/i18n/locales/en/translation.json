@@ -1,0 +1,18 @@
+{
+  "common": {
+    "button": {
+      "search": "Search"
+    }
+  },
+  "DefaultLayout": {
+    "title": "Yaly Couture",
+    "description": "Luxury fashion from Vietnam"
+  },
+  "LandingPage": {
+    "title": "Yaly Couture",
+    "SectionIntro": {
+      "slide": "Slide",
+      "of": "of"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+"use client";
+
+import { I18nextProvider } from "react-i18next";
+import i18n from "@/app/i18n/index";
+import { useEffect } from "react";
+import { Locale } from "../utils/i18n-config";
+
+export function Providers({
+  children,
+  lang,
+}: {
+  children: React.ReactNode;
+  lang: Locale;
+}) {
+  useEffect(() => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lng", lang);
+  }, [lang]);
+
+  return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
+}
