@@ -1,7 +1,7 @@
 "use client";
 
 import { I18nextProvider } from "react-i18next";
-import i18n from "@/app/i18n/index";
+import { initI18n } from "@/app/i18n/index";
 import { useEffect } from "react";
 import { ThemeContextProvider } from "@/context/themeContext";
 import { TLang } from "@/types/lang.type";
@@ -13,8 +13,9 @@ export function Providers({
   children: React.ReactNode;
   lang: TLang;
 }) {
+  const i18n = initI18n(lang);
+
   useEffect(() => {
-    i18n.changeLanguage(lang);
     localStorage.setItem("lng", lang);
   }, [lang]);
 

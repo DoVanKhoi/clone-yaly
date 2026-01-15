@@ -11,8 +11,7 @@
   "LandingPage": {
     "title": "Yaly Couture",
     "SectionIntro": {
-      "slide": "Slide",
-      "of": "of"
+      "slide": "Slide {{current}} of {{count}}"
     }
   }
 }

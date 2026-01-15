@@ -11,8 +11,7 @@
   "LandingPage": {
     "title": "Yaly Couture",
     "SectionIntro": {
-      "slide": "Trang",
-      "of": "trong số"
+      "slide": "Trang {{current}} trong số {{count}}"
     }
   }
 }

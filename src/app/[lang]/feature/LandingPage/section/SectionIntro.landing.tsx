@@ -60,8 +60,10 @@ export default function SectionIntroLanding() {
         <CarouselNext className="absolute top-1/2 right-2 transform -translate-y-1/2" />
       </Carousel>
       <div className="text-muted-foreground py-2 text-center text-sm">
-        {t("LandingPage.SectionIntro.slide")} {current}{" "}
-        {t("LandingPage.SectionIntro.of")} {count}
+        {t("LandingPage.SectionIntro.slide", {
+          current: current,
+          count: count,
+        })}
       </div>
     </div>
   );

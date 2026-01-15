@@ -12,13 +12,13 @@ const resources = {
   },
 };
 
-i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
-  .init({
-    lng: "en",
+export function initI18n(initialLang: string) {
+  const instance = i18n.createInstance();
+  instance.use(initReactI18next).init({
+    lng: initialLang,
     fallbackLng: "en",
-    debug: false,
     resources,
+    react: { useSuspense: true },
   });
-
-export default i18n;
+  return instance;
+}
