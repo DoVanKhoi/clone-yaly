@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { i18n } from "../utils/i18n-config";
+import { LocaleConfig } from "../utils/constants/locales.constants";
 import { Providers } from "./Providers";
 import { TLang } from "@/types/lang.type";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
+  return LocaleConfig.locales.map((locale) => ({ lang: locale }));
 }
 
 export default async function Root(props: {

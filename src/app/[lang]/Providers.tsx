@@ -20,7 +20,7 @@ export function Providers({
 
   return (
     <>
-      <ThemeContextProvider>
+      <ThemeContextProvider lang={lang}>
         <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
       </ThemeContextProvider>
     </>

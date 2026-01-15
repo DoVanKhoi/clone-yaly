@@ -5,9 +5,9 @@ import { Search, User, ShoppingBag, Menu } from "lucide-react";
 import { Logo2 } from "@/public/images";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import LANG from "@/app/utils/constants/lang.constant";
 import ThemeContext from "@/context/themeContext";
 import { cn } from "@/lib/utils";
+import { LocaleConfig } from "@/app/utils/constants/locales.constants";
 
 export default function Header() {
   const [showSearch, setShowSearch] = useState(false);
@@ -15,8 +15,12 @@ export default function Header() {
   const { setLanguage } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
 
-  const langArray = Object.values(LANG);
-  const activeLang = langArray.filter((key) => key.lng === i18n.language)[0];
+  // const langArray = Object.values(LANG);
+  // const activeLang = langArray.filter((key) => key.lng === i18n.language)[0];
+  const langArray = Object.values(LocaleConfig.label);
+  const activeLang = LocaleConfig.locales.filter(
+    (key) => key === i18n.language,
+  )[0];
 
   return (
     <header className="w-full">
@@ -77,7 +81,7 @@ export default function Header() {
               {langArray.map((item, idx) => (
                 <span
                   className={cn(
-                    activeLang.lng === item.lng
+                    activeLang === item.lng
                       ? "text-zinc-800"
                       : "hover:text-zinc-800 cursor-pointer",
                   )}

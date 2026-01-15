@@ -25,10 +25,12 @@ const ThemeContext = createContext<IThemeContextProps>(
 
 interface IThemeContextProviderProps {
   children: ReactNode;
+  lang: TLang;
 }
 
 export const ThemeContextProvider: FC<IThemeContextProviderProps> = ({
   children,
+  lang,
 }) => {
   /**
    * Language
@@ -36,12 +38,7 @@ export const ThemeContextProvider: FC<IThemeContextProviderProps> = ({
   const { i18n } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
-  const [language, setLanguage] = useState<TLang>(() => {
-    if (typeof window !== "undefined") {
-      return (localStorage.getItem("lng") as TLang) || "en";
-    }
-    return "en";
-  });
+  const [language, setLanguage] = useState<TLang>(lang);
 
   useLayoutEffect(() => {
     // persist
@@ -53,6 +50,9 @@ export const ThemeContextProvider: FC<IThemeContextProviderProps> = ({
       .then(() => {
         document.documentElement.setAttribute("dir", i18n.dir());
         document.documentElement.setAttribute("lang", i18n.language);
+
+        // set cookies so that we can use it in proxy
+        document.cookie = `lng=${language}; path=/`;
       })
       .catch(() => {});
 
@@ -67,9 +67,7 @@ export const ThemeContextProvider: FC<IThemeContextProviderProps> = ({
     if (newPath !== pathname) {
       router.push(newPath);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [language]);
+  }, [i18n, language, pathname, router]);
 
   const values: IThemeContextProps = useMemo(
     () => ({
