@@ -1,6 +1,7 @@
 "use client";
 
 import { TLang } from "@/types/lang.type";
+import { usePathname, useRouter } from "next/navigation";
 import {
   createContext,
   Dispatch,
@@ -33,6 +34,8 @@ export const ThemeContextProvider: FC<IThemeContextProviderProps> = ({
    * Language
    */
   const { i18n } = useTranslation();
+  const router = useRouter();
+  const pathname = usePathname();
   const [language, setLanguage] = useState<TLang>(() => {
     if (typeof window !== "undefined") {
       return (localStorage.getItem("lng") as TLang) || "en";
@@ -41,8 +44,10 @@ export const ThemeContextProvider: FC<IThemeContextProviderProps> = ({
   });
 
   useLayoutEffect(() => {
+    // persist
     localStorage.setItem("lng", language);
 
+    // update i18n
     i18n
       .changeLanguage(language)
       .then(() => {
@@ -54,6 +59,14 @@ export const ThemeContextProvider: FC<IThemeContextProviderProps> = ({
     // Changing the global locale doesn't affect existing instances.
     // more information: https://day.js.org/docs/en/i18n/changing-locale
     // If you want the current instances to change instantly: dayjs().locale(i18n.language)
+
+    // update URL: replace first segment with new language
+    const segments = pathname.split("/");
+    segments[1] = language;
+    const newPath = segments.join("/");
+    if (newPath !== pathname) {
+      router.push(newPath);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);

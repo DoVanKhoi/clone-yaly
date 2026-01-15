@@ -3,15 +3,15 @@
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/app/i18n/index";
 import { useEffect } from "react";
-import { Locale } from "../utils/i18n-config";
 import { ThemeContextProvider } from "@/context/themeContext";
+import { TLang } from "@/types/lang.type";
 
 export function Providers({
   children,
   lang,
 }: {
   children: React.ReactNode;
-  lang: Locale;
+  lang: TLang;
 }) {
   useEffect(() => {
     i18n.changeLanguage(lang);

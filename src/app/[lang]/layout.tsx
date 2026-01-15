@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { i18n, Locale } from "../utils/i18n-config";
+import { i18n } from "../utils/i18n-config";
 import { Providers } from "./Providers";
+import { TLang } from "@/types/lang.type";
 
 export const metadata: Metadata = {
   title: "Yaly Couture",
@@ -14,7 +15,7 @@ export async function generateStaticParams() {
 
 export default async function Root(props: {
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: TLang }>;
 }) {
   const params = await props.params;
 
