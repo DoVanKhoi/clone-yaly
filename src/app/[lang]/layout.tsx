@@ -3,6 +3,7 @@ import "./globals.css";
 import { LocaleConfig } from "../utils/constants/locales.constants";
 import { Providers } from "./Providers";
 import { TLang } from "@/types/lang.type";
+import LandingPageLayout from "./feature/LandingPage/layout/LandingPageLayout";
 
 export const metadata: Metadata = {
   title: "Yaly Couture",
@@ -24,7 +25,9 @@ export default async function Root(props: {
   return (
     <html lang={params.lang}>
       <body>
-        <Providers lang={params.lang}>{children}</Providers>
+        <Providers lang={params.lang}>
+          <LandingPageLayout>{children}</LandingPageLayout>
+        </Providers>
       </body>
     </html>
   );
