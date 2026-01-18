@@ -8,15 +8,16 @@ import { useTranslation } from "react-i18next";
 import ThemeContext from "@/context/themeContext";
 import { cn } from "@/lib/utils";
 import { LocaleConfig } from "@/app/utils/constants/locales.constants";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const { setLanguage } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
+  const router = useRouter();
 
-  // const langArray = Object.values(LANG);
-  // const activeLang = langArray.filter((key) => key.lng === i18n.language)[0];
   const langArray = Object.values(LocaleConfig.label);
   const activeLang = LocaleConfig.locales.filter(
     (key) => key === i18n.language,
@@ -69,7 +70,10 @@ export default function Header() {
             <User size={26} className="cursor-pointer" />
 
             {/* CART */}
-            <div className="relative cursor-pointer">
+            <div
+              className="relative cursor-pointer"
+              onClick={() => router.push("/cart")}
+            >
               <ShoppingBag size={26} />
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                 0
@@ -115,7 +119,7 @@ export default function Header() {
       <nav className="hidden md:block bg-zinc-300">
         <ul className="max-w-7xl mx-auto px-6 flex items-center h-14 justify-center">
           <li className="bg-orange-500 text-white px-6 h-full flex items-center font-medium">
-            TRANG CHỦ
+            <Link href={"/"}>TRANG CHỦ</Link>
           </li>
           {["VỀ YALY", "MAY ĐO", "MUA SẮM", "NỔI BẬT", "FAQS"].map(
             (item, index) => (

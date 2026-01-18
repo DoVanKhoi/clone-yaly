@@ -2,6 +2,9 @@
   "common": {
     "button": {
       "search": "Search"
+    },
+    "text": {
+      "noData": "No data"
     }
   },
   "DefaultLayout": {

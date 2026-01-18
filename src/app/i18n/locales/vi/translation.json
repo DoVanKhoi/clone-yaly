@@ -2,6 +2,9 @@
   "common": {
     "button": {
       "search": "Tìm kiếm"
+    },
+    "text": {
+      "noData": "Không dữ liệu"
     }
   },
   "DefaultLayout": {
