@@ -5,6 +5,10 @@ export { default as Background4 } from "./img_4.jpg";
 export { default as Background5 } from "./img_5.jpg";
 export { default as ImgContent1 } from "./img_6.webp";
 export { default as CartImg } from "./cart_item.webp";
+export { default as Visa } from "./visa.png";
+export { default as Paypal } from "./paypal.png";
+export { default as MasterCard } from "./master-card.png";
+export { default as AmericanExpress } from "./american-express.png";
 
 export { default as Logo } from "./logo.svg";
 export { default as Logo2 } from "./Logo2.svg";
