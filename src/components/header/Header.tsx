@@ -1,15 +1,28 @@
-'use client';
+"use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Search, User, ShoppingBag, Menu } from "lucide-react";
 import { Logo2 } from "@/public/images";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
+import ThemeContext from "@/context/themeContext";
+import { cn } from "@/lib/utils";
+import { LocaleConfig } from "@/app/utils/constants/locales.constants";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
     const [showSearch, setShowSearch] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    const { setLanguage } = useContext(ThemeContext);
+    const { t, i18n } = useTranslation();
+    const router = useRouter();
+
+    const langArray = Object.values(LocaleConfig.label);
+    const activeLang = LocaleConfig.locales.filter(
+        (key) => key === i18n.language,
+    )[0];
     const pathname = usePathname();
 
     const menu = [
@@ -26,7 +39,6 @@ export default function Header() {
             {/* TOP BAR */}
             <div className="bg-white border-b">
                 <div className="max-w-7xl mx-auto px-6 h-24 grid grid-cols-3 items-center">
-
                     {/* LEFT - MENU (mobile) */}
                     <button
                         className="md:hidden text-zinc-700"
@@ -40,7 +52,7 @@ export default function Header() {
                         <Search size={24} />
                         <input
                             type="text"
-                            placeholder="Tìm kiếm..."
+                            placeholder={t("common.button.search")}
                             className="outline-none text-sm w-full placeholder:italic"
                         />
                     </div>
@@ -58,7 +70,6 @@ export default function Header() {
 
                     {/* RIGHT ICONS */}
                     <div className="flex justify-end items-center gap-6 text-zinc-600">
-
                         {/* SEARCH ICON (mobile) */}
                         <button
                             className="md:hidden"
@@ -70,7 +81,10 @@ export default function Header() {
                         <User size={26} className="cursor-pointer" />
 
                         {/* CART */}
-                        <div className="relative cursor-pointer">
+                        <div
+                            className="relative cursor-pointer"
+                            onClick={() => router.push("/cart")}
+                        >
                             <ShoppingBag size={26} />
                             <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                                 0
@@ -79,9 +93,20 @@ export default function Header() {
 
                         {/* LANGUAGE (desktop) */}
                         <div className="hidden md:flex items-center gap-2 text-sm font-medium">
-                            <span className="text-zinc-800">VN</span>
-                            <span className="text-zinc-400">|</span>
-                            <span className="hover:text-zinc-800 cursor-pointer">EN</span>
+                            {langArray.map((item, idx) => (
+                                <span
+                                    className={cn(
+                                        activeLang === item.lng
+                                            ? "text-zinc-800"
+                                            : "hover:text-zinc-800 cursor-pointer",
+                                    )}
+                                    key={item.lng}
+                                    onClick={() => setLanguage(item.lng)}
+                                >
+                                    {idx !== 0 && <span className="text-zinc-400">|</span>}
+                                    {item.text}
+                                </span>
+                            ))}
                         </div>
                     </div>
                 </div>

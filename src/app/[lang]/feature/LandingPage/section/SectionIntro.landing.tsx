@@ -10,11 +10,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function SectionIntroLanding() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = t("LandingPage.title");
+  });
 
   useEffect(() => {
     if (!api) {
@@ -54,7 +60,10 @@ export default function SectionIntroLanding() {
         <CarouselNext className="absolute top-1/2 right-2 transform -translate-y-1/2" />
       </Carousel>
       <div className="text-muted-foreground py-2 text-center text-sm">
-        Slide {current} of {count}
+        {t("LandingPage.SectionIntro.slide", {
+          current: current,
+          count: count,
+        })}
       </div>
     </div>
   );
