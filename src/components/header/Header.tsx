@@ -1,13 +1,25 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { Search, User, ShoppingBag, Menu } from "lucide-react";
 import { Logo2 } from "@/public/images";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
     const [showSearch, setShowSearch] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    const pathname = usePathname();
+
+    const menu = [
+        { label: "TRANG CHỦ", href: "/vi" },
+        { label: "VỀ YALY", href: "/vi/about-us" },
+        { label: "MAY ĐO", href: "/vi/bespoke" },
+        { label: "MUA SẮM", href: "/vi/shop" },
+        { label: "NỔI BẬT", href: "/vi/highlight" },
+        { label: "FAQS", href: "/vi/faqs" },
+    ];
 
     return (
         <header className="w-full">
@@ -92,17 +104,27 @@ export default function Header() {
             {/* NAVBAR DESKTOP */}
             <nav className="hidden md:block bg-zinc-300">
                 <ul className="max-w-7xl mx-auto px-6 flex items-center h-14 justify-center">
-                    <li className="bg-orange-500 text-white px-6 h-full flex items-center font-medium">
-                        TRANG CHỦ
-                    </li>
-                    {["VỀ YALY", "MAY ĐO", "MUA SẮM", "NỔI BẬT", "FAQS"].map((item, index) => (
-                        <li
-                            key={index}
-                            className="px-6 h-full flex items-center text-zinc-700 hover:text-white hover:bg-orange-500 font-medium cursor-pointer"
-                        >
-                            {item}
-                        </li>
-                    ))}
+                    {menu.map((item, index) => {
+                        const isActive =
+                            item.href === "/vi"
+                                ? pathname === "/vi"
+                                : pathname.startsWith(item.href);
+
+                        return (
+                            <li key={index} className="h-full">
+                                <Link
+                                    href={item.href}
+                                    className={`px-6 h-full flex items-center font-medium transition-colors
+                                    ${isActive
+                                            ? "bg-orange-500 text-white"
+                                            : "text-zinc-700 hover:text-white hover:bg-orange-500"
+                                        }`}
+                                >
+                                    {item.label}
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
             </nav>
 
@@ -110,16 +132,17 @@ export default function Header() {
             {showMenu && (
                 <div className="md:hidden bg-white border-t">
                     <ul className="flex flex-col">
-                        {["TRANG CHỦ", "VỀ YALY", "MAY ĐO", "MUA SẮM", "NỔI BẬT", "FAQS"].map(
-                            (item, index) => (
-                                <li
-                                    key={index}
-                                    className="px-4 py-3 border-b text-zinc-700 hover:bg-zinc-100 cursor-pointer"
+                        {menu.map((item, index) => (
+                            <li key={index} className="border-b last:border-b-0">
+                                <Link
+                                    href={item.href}
+                                    onClick={() => setShowMenu(false)}
+                                    className="block px-4 py-3 text-zinc-700 hover:bg-zinc-100 transition-colors"
                                 >
-                                    {item}
-                                </li>
-                            )
-                        )}
+                                    {item.label}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             )}
