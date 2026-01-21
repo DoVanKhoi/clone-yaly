@@ -12,3 +12,5 @@ export { default as AmericanExpress } from "./american-express.png";
 
 export { default as Logo } from "./logo.svg";
 export { default as Logo2 } from "./Logo2.svg";
+export { default as Logo3 } from "./logo3.svg";
+export { default as Logo8 } from "./logo8.svg";
