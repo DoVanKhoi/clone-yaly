@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import ThemeContext from "@/context/themeContext";
 import { cn } from "@/lib/utils";
 import { LocaleConfig } from "@/app/utils/constants/locales.constants";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -23,15 +23,18 @@ export default function Header() {
     const activeLang = LocaleConfig.locales.filter(
         (key) => key === i18n.language,
     )[0];
+
+    const { lang } = useParams<{ lang: "vi" | "en" }>();
     const pathname = usePathname();
+    const cleanPathname = pathname.replace(`/${lang}`, "") || "/";
 
     const menu = [
-        { label: "TRANG CHỦ", href: "/vi" },
-        { label: "VỀ YALY", href: "/vi/about-us" },
-        { label: "MAY ĐO", href: "/vi/bespoke" },
-        { label: "MUA SẮM", href: "/vi/shop" },
-        { label: "NỔI BẬT", href: "/vi/highlight" },
-        { label: "FAQS", href: "/vi/faqs" },
+        { labelVN: "TRANG CHỦ", labelEN: "HOME", path: "" },
+        { labelVN: "VỀ YALY", labelEN: "ABOUT YALY", path: "about-us" },
+        { labelVN: "MAY ĐO", labelEN: "BESPOKE", path: "bespoke" },
+        { labelVN: "MUA SẮM", labelEN: "SHOP", path: "shop" },
+        { labelVN: "NỔI BẬT", labelEN: "HIGHLIGHT", path: "highlight" },
+        { labelVN: "FAQS", labelEN: "FAQS", path: "faqs" },
     ];
 
     return (
@@ -130,28 +133,30 @@ export default function Header() {
             <nav className="hidden md:block bg-zinc-300">
                 <ul className="max-w-7xl mx-auto px-6 flex items-center h-14 justify-center">
                     {menu.map((item, index) => {
+                        const itemPath = item.path ? `/${item.path}` : "/";
                         const isActive =
-                            item.href === "/vi"
-                                ? pathname === "/vi"
-                                : pathname.startsWith(item.href);
+                            itemPath === "/"
+                                ? cleanPathname === "/"
+                                : cleanPathname.startsWith(itemPath);
 
                         return (
                             <li key={index} className="h-full">
                                 <Link
-                                    href={item.href}
+                                    href={`/${lang}/${item.path}`}
                                     className={`px-6 h-full flex items-center font-medium transition-colors
-                                    ${isActive
+                        ${isActive
                                             ? "bg-orange-500 text-white"
                                             : "text-zinc-700 hover:text-white hover:bg-orange-500"
                                         }`}
                                 >
-                                    {item.label}
+                                    {lang === "vi" ? item.labelVN : item.labelEN}
                                 </Link>
                             </li>
                         );
                     })}
                 </ul>
             </nav>
+
 
             {/* NAVBAR MOBILE */}
             {showMenu && (
@@ -160,11 +165,11 @@ export default function Header() {
                         {menu.map((item, index) => (
                             <li key={index} className="border-b last:border-b-0">
                                 <Link
-                                    href={item.href}
+                                    href={`/${lang}/${item.path}`}
                                     onClick={() => setShowMenu(false)}
                                     className="block px-4 py-3 text-zinc-700 hover:bg-zinc-100 transition-colors"
                                 >
-                                    {item.label}
+                                    {activeLang === "vi" ? item.labelVN : item.labelEN}
                                 </Link>
                             </li>
                         ))}
