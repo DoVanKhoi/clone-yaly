@@ -12,6 +12,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { TLang } from "@/types/lang.type";
 import { usePathname } from "next/navigation";
+import useScrollDirection from "@/useHooks/useScrollDirection";
 
 export default function Header() {
   const [showSearch, setShowSearch] = useState(false);
@@ -19,6 +20,7 @@ export default function Header() {
   const { setLanguage } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const router = useRouter();
+  const scrollDirection = useScrollDirection();
 
   const langArray = Object.values(LocaleConfig.label);
   const activeLang = LocaleConfig.locales.filter(
@@ -39,7 +41,12 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full">
+    <header
+      className={`
+        w-full sticky top-0 z-100 transition-transform duration-300 ease-in-out
+        ${scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"}
+      `}
+    >
       {/* TOP BAR */}
       <div className="bg-white border-b">
         <div className="flex md:justify-between md:max-w-7xl mx-auto px-2 md:px-6 h-24">
