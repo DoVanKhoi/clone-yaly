@@ -1,5 +1,7 @@
 import Link from "next/link";
 import ScrollToTopButton from "../ScrollToTopButton";
+import Image from "next/image";
+import { Logo4 } from "@/public/images";
 
 export default function Footer() {
   return (
@@ -31,20 +33,12 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* LOGO */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3 bg-gray-600">
-              {/* <Image
-                src="/logo-yaly-white.png" // đổi path logo
-                alt="Yaly Couture"
-                width={60}
-                height={60}
-              /> */}
-              <span className="text-lg font-semibold tracking-wide">
-                YALY COUTURE
-              </span>
+            <div className="flex justify-center gap-3 ">
+              <Image src={Logo4} alt="Yaly Couture" width={100} height={100} />
             </div>
 
-            <p className="italic text-sm text-zinc-300">
-              – Custom Tailoring. Traditional Value –
+            <p className="flex justify-center italic text-sm text-zinc-300">
+              &#x002D; Custom Tailoring. Traditional Value &#x002D;
             </p>
           </div>
 
