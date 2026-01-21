@@ -16,5 +16,15 @@
     "SectionIntro": {
       "slide": "Trang {{current}} trong số {{count}}"
     }
+  },
+  "Header": {
+    "menu": {
+      "home": "TRANG CHỦ",
+      "about": "VỀ YALY",
+      "bespoke": "MAY ĐO",
+      "shop": "MUA SẮM",
+      "highlight": "NỔI BẬT",
+      "faqs": "FAQS"
+    }
   }
 }

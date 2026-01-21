@@ -16,5 +16,15 @@
     "SectionIntro": {
       "slide": "Slide {{current}} of {{count}}"
     }
+  },
+  "Header": {
+    "menu": {
+      "home": "HOME",
+      "about": "ABOUT YALY",
+      "bespoke": "BESPOKE",
+      "shop": "SHOP",
+      "highlight": "HIGHLIGHT",
+      "faqs": "FAQS"
+    }
   }
 }

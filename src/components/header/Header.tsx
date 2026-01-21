@@ -25,17 +25,17 @@ export default function Header() {
     (key) => key === i18n.language,
   )[0];
 
-  const { lang } = useParams<{ lang: "vi" | "en" }>();
+  const { lang } = useParams<{ lang: TLang }>();
   const pathname = usePathname();
   const cleanPathname = pathname.replace(`/${lang}`, "") || "/";
 
   const menu = [
-    { labelVN: "TRANG CHỦ", labelEN: "HOME", path: "" },
-    { labelVN: "VỀ YALY", labelEN: "ABOUT YALY", path: "about-us" },
-    { labelVN: "MAY ĐO", labelEN: "BESPOKE", path: "bespoke" },
-    { labelVN: "MUA SẮM", labelEN: "SHOP", path: "shop" },
-    { labelVN: "NỔI BẬT", labelEN: "HIGHLIGHT", path: "highlight" },
-    { labelVN: "FAQS", labelEN: "FAQS", path: "faqs" },
+    { label: "Header.menu.home", path: "" },
+    { label: "Header.menu.about", path: "about-us" },
+    { label: "Header.menu.bespoke", path: "bespoke" },
+    { label: "Header.menu.shop", path: "shop" },
+    { label: "Header.menu.highlight", path: "highlight" },
+    { label: "Header.menu.faqs", path: "faqs" },
   ];
 
   return (
@@ -167,21 +167,18 @@ export default function Header() {
           </div>
         )}
       </div>
-      
+
       {/* NAVBAR DESKTOP */}
       <nav className="hidden md:block bg-zinc-300">
         <ul className="max-w-7xl mx-auto px-6 flex items-center h-14 justify-center">
           {menu.map((item, index) => {
             const itemPath = item.path ? `/${item.path}` : "/";
-            const isActive =
-              itemPath === "/"
-                ? cleanPathname === "/"
-                : cleanPathname.startsWith(itemPath);
+            const isActive = cleanPathname === itemPath;
 
             return (
               <li key={index} className="h-full">
                 <Link
-                  href={`/${lang}/${item.path}`}
+                  href={`/${item.path}`}
                   className={`px-6 h-full flex items-center font-medium transition-colors
                         ${
                           isActive
@@ -189,7 +186,7 @@ export default function Header() {
                             : "text-zinc-700 hover:text-white hover:bg-orange-500"
                         }`}
                 >
-                  {lang === "vi" ? item.labelVN : item.labelEN}
+                  {t(item.label)}
                 </Link>
               </li>
             );
@@ -204,11 +201,11 @@ export default function Header() {
             {menu.map((item, index) => (
               <li key={index} className="border-b last:border-b-0">
                 <Link
-                  href={`/${lang}/${item.path}`}
+                  href={`/${item.path}`}
                   onClick={() => setShowMenu(false)}
                   className="block px-4 py-3 text-zinc-700 hover:bg-zinc-100 transition-colors"
                 >
-                  {activeLang === "vi" ? item.labelVN : item.labelEN}
+                  {t(item.label)}
                 </Link>
               </li>
             ))}
