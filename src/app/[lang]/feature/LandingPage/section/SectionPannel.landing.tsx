@@ -55,11 +55,11 @@ export default function SectionPannelLanding() {
           className="h-dvh bg-cover bg-center bg-fixed flex items-center justify-center flex-col"
           style={{ backgroundImage: `url(${pannel.img})` }}
         >
-          <h1 className="text-6xl font-semibold text-center text-white mb-4 w-3xl">
+          <div className="text-4xl md:text-6xl font-semibold text-center text-white mb-4 w-xs md:w-max">
             {pannel.title_VN}
-          </h1>
+          </div>
           <a
-            className="text-3xl font-bold uppercase text-[#333] bg-white px-4 py-3 text-center rounded"
+            className="text-xl md:text-3xl font-bold uppercase text-[#333] bg-white px-4 py-3 text-center rounded"
             href="#"
           >
             {pannel.link_VN}

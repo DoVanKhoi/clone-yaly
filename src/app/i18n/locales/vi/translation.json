@@ -2,6 +2,9 @@
   "common": {
     "button": {
       "search": "Tìm kiếm"
+    },
+    "text": {
+      "noData": "Không dữ liệu"
     }
   },
   "DefaultLayout": {
@@ -12,6 +15,22 @@
     "title": "Yaly Couture",
     "SectionIntro": {
       "slide": "Trang {{current}} trong số {{count}}"
+    },
+    "SectionContent": {
+      "content": {
+        "title": "Yaly Couture - Thời Trang May Đo Cao Cấp",
+        "content": "With <strong><first>{{number}}</first></strong> skilled artisans, Yaly Couture delivers a luxurious tailored experience rooted in Hoi An's heritage.<br/> Rigorous <strong><second>in-house training</second></strong> ensures excellence from measurements to final products. Our craftsmen guarantees expertise in creating stunning, individualized garments at affordable price without compromising our exceptional quality standard.<br/> Let's explore in detail the high-end bespoke tailoring process at <strong><third>Yaly Couture</third></strong>, the most prestigious bespoke tailor workshop in Hoi An."
+      }
+    }
+  },
+  "Header": {
+    "menu": {
+      "home": "TRANG CHỦ",
+      "about": "VỀ YALY",
+      "bespoke": "MAY ĐO",
+      "shop": "MUA SẮM",
+      "highlight": "NỔI BẬT",
+      "faqs": "FAQS"
     }
   }
 }
