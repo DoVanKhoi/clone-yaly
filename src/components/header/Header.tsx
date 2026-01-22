@@ -43,7 +43,7 @@ export default function Header() {
   return (
     <header
       className={`
-        w-full sticky top-0 z-100 transition-transform duration-300 ease-in-out
+        w-full sticky top-0 z-100 transition-transform duration-300 ease-in-out scrollbar
         ${scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"}
       `}
     >
