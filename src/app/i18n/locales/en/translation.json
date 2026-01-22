@@ -15,6 +15,12 @@
     "title": "Yaly Couture",
     "SectionIntro": {
       "slide": "Slide {{current}} of {{count}}"
+    },
+    "SectionContent": {
+      "content": {
+        "title": "Yaly Bespoke Tailor",
+        "content": "With <strong><first>{{number}}</first></strong> skilled artisans, Yaly Couture delivers a luxurious tailored experience rooted in Hoi An's heritage.<br/> Rigorous <strong><second>in-house training</second></strong> ensures excellence from measurements to final products. Our craftsmen guarantees expertise in creating stunning, individualized garments at affordable price without compromising our exceptional quality standard.<br/> Let's explore in detail the high-end bespoke tailoring process at <strong><third>Yaly Couture</third></strong>, the most prestigious bespoke tailor workshop in Hoi An."
+      }
     }
   },
   "Header": {

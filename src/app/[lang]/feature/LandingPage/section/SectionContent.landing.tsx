@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
+import { Trans, useTranslation } from "react-i18next";
 
 const products = [
   {
@@ -52,46 +53,51 @@ const products = [
 ];
 
 export default function SectionContentLanding() {
+  const { t } = useTranslation();
+
   return (
     <>
-      <div className="mx-4 lg:mx-32 px-4 lg:px-12 py-12">
-        <div className="flex flex-col lg:flex-row items-center gap-8">
-          {/* IMAGE */}
-          <div className="w-full lg:w-1/2 relative overflow-hidden">
-            <div className="aspect-4/5 w-full">
+      <div className="container ml-auto mr-auto">
+        <div className="mx-4 md:mx-32 px-2 md:px-24 py-12">
+          <div className="flex">
+            {/* IMAGE */}
+            <div className="w-1/2 overflow-hidden mr-4">
               <Image
                 src={ImgContent1}
                 alt="Content Image"
-                fill
-                className="object-contain"
-                sizes="(min-width: 1024px) 50vw, 100vw"
+                width={380}
+                height={570}
               />
             </div>
-          </div>
 
-          {/* CONTENT */}
-          <div className="w-full lg:w-1/2 text-zinc-700">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 wrap-break-word">
-              Yaly Couture - Thời Trang May Đo Cao Cấp
-            </h2>
+            {/* CONTENT */}
+            <div className="w-1/2 text-zinc-700">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 wrap-break-word">
+                {t("LandingPage.SectionContent.content.title")}
+              </h2>
 
-            <p className="text-base md:text-lg leading-relaxed mb-6 wrap-break-word">
-              With 300 skilled artisans, Yaly Couture delivers a luxurious
-              tailored experience rooted in Hoi An's heritage. Rigorous in-house
-              training ensures excellence from measurements to final products.
-              Our craftsmen guarantees expertise in creating stunning,
-              individualized garments at affordable price without compromising
-              our exceptional quality standard. Let's explore in detail the
-              high-end bespoke tailoring process at Yaly Couture, the most
-              prestigious bespoke tailor workshop in Hoi An.
-            </p>
+              <p className="text-[1.1rem] md:text-md leading-relaxed mb-6 wrap-break-word line-clamp-9 md:line-clamp-none text-ellipsis">
+                <Trans
+                  i18nKey={"LandingPage.SectionContent.content.content"}
+                  values={{
+                    number: 300,
+                  }}
+                  components={{
+                    strong: <strong />,
+                    first: <u />,
+                    second: <u />,
+                    third: <span className="text-[#f58634]" />,
+                  }}
+                />
+              </p>
 
-            <a
-              href="#"
-              className="inline-block text-base md:text-lg font-medium uppercase text-white bg-orange-400 px-6 py-3 rounded hover:bg-orange-500 transition"
-            >
-              XEM THÊM
-            </a>
+              <a
+                href="#"
+                className="inline-block text-base md:text-md font-medium uppercase text-white bg-orange-400 px-6 py-3 rounded hover:bg-orange-500 transition"
+              >
+                XEM THÊM
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -99,7 +105,7 @@ export default function SectionContentLanding() {
       {Array.from({ length: 6 }).map((_, index) => (
         <div
           key={index}
-          className="mx-4 lg:mx-32 border-t border-b border-gray-300 py-8"
+          className="mx-4 md:mx-32 border-t border-b border-gray-300 py-8"
         >
           {/* HEADER */}
           <div className="grid grid-cols-3 items-center mb-6">
@@ -115,7 +121,7 @@ export default function SectionContentLanding() {
             <div className="text-right">
               <a
                 href="#"
-                className="text-base md:text-lg font-light text-zinc-500 underline hover:text-blue-400"
+                className="text-base md:text-md font-light text-zinc-500 underline hover:text-blue-400"
               >
                 Xem thêm &gt;
               </a>
@@ -128,7 +134,7 @@ export default function SectionContentLanding() {
               {products.map((item, index) => (
                 <CarouselItem
                   key={index}
-                  className="basis-full sm:basis-1/2 lg:basis-1/4"
+                  className="basis-full sm:basis-1/2 md:basis-1/4"
                 >
                   <div className="p-2">
                     <Link href="#">
@@ -139,8 +145,8 @@ export default function SectionContentLanding() {
               ))}
             </CarouselContent>
 
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden md:inline-flex" />
+            <CarouselNext className="hidden md:inline-flex" />
           </Carousel>
         </div>
       ))}
