@@ -33,15 +33,16 @@ export default function ConfirmDialog({
         <DialogFooter className="sm:justify-end">
           <Button
             type="button"
-            variant="secondary"
+            variant={"outline"}
             onClick={() => setIsOpenDialog(!isOpenDialog)}
+            className="border-[#f58634] hover:border-[#f58634] text-[#f58634] hover:text-[#f58634] cursor-pointer"
           >
             {cancelButton}
           </Button>
           <Button
             type="button"
-            variant="default"
             onClick={() => setIsOpenDialog(!isOpenDialog)}
+            className="border-[#f58634] hover:border-[#f58634] bg-[#f58634] hover:bg-[#f58634] text-white hover:text-white cursor-pointer"
           >
             {confirmButton}
           </Button>

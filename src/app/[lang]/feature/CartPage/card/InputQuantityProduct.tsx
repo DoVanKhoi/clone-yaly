@@ -22,12 +22,12 @@ export default function InputQuantityProduct() {
 
   return (
     <>
-      <div className="grid w-full max-w-1/2 gap-6">
+      <div className="grid w-full max-w-10/12 md:max-w-1/2 gap-6">
         <InputGroup>
           <InputGroupAddon
             align="inline-start"
             className={cn(
-              "rounded-l-2xl transition-colors",
+              "rounded-l-3xl md:rounded-l-2xl transition-colors",
               value === 1 ? "bg-gray-100" : "",
             )}
           >

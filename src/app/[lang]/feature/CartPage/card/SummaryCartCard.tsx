@@ -9,7 +9,7 @@ import { AmericanExpress, MasterCard, Paypal, Visa } from "@/public/images";
 
 export default function SummaryCartCard() {
   return (
-    <Card>
+    <Card className="m-4 md:m-0">
       <CardContent>
         <div>
           <div className="flex justify-between text-2xl">

@@ -9,9 +9,11 @@ import InputQuantityProduct from "./InputQuantityProduct";
 import ConfirmDialog from "@/components/dialog/ConfirmDialog";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
+import useIsMobile from "@/useHooks/useIsMobile";
 
 export default function CartCard() {
   const [isOpenDeleteDialog, setIsOpenDeleteDialog] = useState<boolean>(false);
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -45,8 +47,16 @@ export default function CartCard() {
                       variant="outline"
                       className="border-[#f58634] hover:border-[#f58634] text-[#f58634] hover:text-[#f58634] cursor-pointer"
                     >
-                      <Heart />
-                      Thêm vào yêu thích
+                      {isMobile ? (
+                        <>
+                          <Heart />
+                        </>
+                      ) : (
+                        <>
+                          <Heart />
+                          Thêm vào yêu thích
+                        </>
+                      )}
                     </Button>
                   </div>
                   <div className="ml-4 flex">
