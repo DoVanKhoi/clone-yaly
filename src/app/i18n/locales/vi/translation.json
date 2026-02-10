@@ -27,9 +27,9 @@
     "menu": {
       "home": "TRANG CHỦ",
       "about": "VỀ YALY",
-      "bespoke": "MAY ĐO",
-      "shop": "MUA SẮM",
-      "highlight": "NỔI BẬT",
+      "tailoring-guide": "MAY ĐO",
+      "catalog": "MUA SẮM",
+      "news": "NỔI BẬT",
       "faqs": "FAQS"
     }
   }

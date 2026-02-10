@@ -27,9 +27,9 @@
     "menu": {
       "home": "HOME",
       "about": "ABOUT YALY",
-      "bespoke": "BESPOKE",
-      "shop": "SHOP",
-      "highlight": "HIGHLIGHT",
+      "tailoring-guide": "GET MEASURED",
+      "catalog": "SHOPPING",
+      "news": "PRESS",
       "faqs": "FAQS"
     }
   }
